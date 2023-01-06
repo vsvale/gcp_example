@@ -16,6 +16,10 @@
 - Nested array fields and STRUCT fields allow for differing data granularity in the same table
 ![nestedandstruct.png](/imgs/nestedandstruct.png)
 - BQ nested and repeated columns allow you to achieve the performance benefits of denormalization while retaining the structure of the data.
+- keep a dimension table smaller than 10 GB normalized, unless the table rarely goes through UPDATE and DELETE operation
+- Denormalize a dimension table larger than 10 GB, unless data manipulation or costs outweigh benefits of optimal queries
+- Data in an array [ ] must all be the same type
+- The easiest way to think about a STRUCT is to consider it conceptually like a separate table that is already pre-joined into your main table.
 
 ## Python BigQuery
 [Python Client for Google BigQuery](https://github.com/googleapis/python-bigquery)

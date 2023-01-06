@@ -33,3 +33,41 @@ FROM `cloud-training-demos.bitcoin_blockchain.blocks` AS b
   , UNNEST(t.outputs) AS t_outputs
 ORDER BY btc_value DESC
 LIMIT 10;
+
+-- Creating your own arrays with ARRAY_AGG()
+SELECT
+  fullVisitorId,
+  date,
+  ARRAY_AGG(v2ProductName) AS products_viewed,
+  --ARRAY_LENGTH() function to count
+  ARRAY_LENGTH(ARRAY_AGG(DISTINCT v2ProductName)) AS distinct_products_viewed,
+  ARRAY_AGG(pageTitle) AS pages_viewed,
+  -- DISTINCT COUNT
+  ARRAY_LENGTH(ARRAY_AGG(DISTINCT pageTitle)) AS distinct_pages_viewed
+  FROM `data-to-insights.ecommerce.all_sessions`
+WHERE visitId = 1501570398
+GROUP BY fullVisitorId, date
+ORDER BY date
+
+-- SCTRUC and ARRAY
+SELECT STRUCT("Rudisha" as name, [23.4, 26.3, 26.4, 26.1] as splits) AS runner
+
+-- return a field nested in struct
+SELECT race, participants.name
+FROM racing.race_results AS r, r.participants
+
+-- count in struct
+SELECT COUNT(p.name) AS racer_count
+FROM racing.race_results AS r, UNNEST(r.participants) AS p
+
+-- filter struct
+#standardSQL
+SELECT
+  p.name,
+  SUM(split_times) as total_race_time
+FROM racing.race_results AS r
+, UNNEST(r.participants) AS p
+, UNNEST(p.splits) AS split_times
+WHERE p.name LIKE 'R%'
+GROUP BY p.name
+ORDER BY total_race_time ASC;
