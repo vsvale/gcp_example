@@ -33,6 +33,22 @@
 - Cloud Functions
 - Cloud Storage
 
+## EL, ELT, ETL
+- EL: 
+    - clean and correct data to BigQuery storage
+    - historical and log files
+    - data from files on cloud storage
+    - triggered from cloud composer, cloud functions or scheduled queries
+
+- ELT: 
+    - Cloud Storage into BigQuery
+    - Transform data using BigQuery views
+- ETL:
+    - Extract data from Pub/Sub, Cloud Storage, Cloud SQL, Cloud Spanner
+    - Transform the data using DataFlow (Beam), Dataproc (Spark) or Data Fusion (Python, drag and drop)
+    - Pepeline write to BigQuery
+    - Can use CI/CD to perform unit testing
+
 ## Projects
 - One organization has many projects
 - Any GCP resource is allocated in a Project
