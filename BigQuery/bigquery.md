@@ -23,3 +23,5 @@
 
 ## Python BigQuery
 [Python Client for Google BigQuery](https://github.com/googleapis/python-bigquery)
+
+## Partition

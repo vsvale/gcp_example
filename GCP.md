@@ -49,4 +49,9 @@
 - Flexible roles: Prior to IAM tou could only grant Owner, Editor an Viewer roles to users. A wide range of services and resources now surface additional IAM roles out of the box. For example,the Pub/Sub service exposes Publisher and Subscriber roles.
 - Web, Programmatic & CLI: create and manage IAM policies using the console, the IAM methods and the gcloud command line tool
 
-## Google 
+## Google Stack development
+- Git: cloud source repositories
+- Vscode: cloud shell editor
+- Esteira: Cloud Builder
+- Registry: Artifact registry
+[](/imgs/cicd.png)

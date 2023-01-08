@@ -1,0 +1,24 @@
+
+- create a connection profile
+    - choose database
+    - host
+    - port
+- create migration job
+    - choose database engine
+    - type: 
+        - continuous: CDC
+        - One-time: dump
+    - source: 
+        - profile
+        - dump file
+    - Regional/Zone
+    - Connections:
+        - Private
+        - Public
+    - Machine Type
+    - Storage capacity: enable automatic storage increases 
+    - How connect:
+        - Reverse-SSH tunnel via cloud-host: onpremisse to cloud
+        - VPC perring: from cloud to GCP
+    - Test job
+- criar os usuarios com os devidos acessos: use o cloud IAM
