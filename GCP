@@ -1,0 +1,162 @@
+### GCP
+- backbone opensource
+
+### Gloogle Cloud Storage
+- HDFS gerenciado
+- Object storage
+- Serveless
+
+### Google Cloud Big Query
+- Data warehouse MPP
+- MDW
+- Query at scale
+- Serveless
+- ML integrado
+
+### Cloud SQL
+- managed Relational database
+
+### Google Cloud Spanner
+- Global and distributed SQL Engine
+- CAP with distributed Transactions
+
+### Operations
+- monitoring, logging, profiler and trace
+
+### GKE
+- Google Kubernetes Engine
+- Managed
+
+### Data Flow
+- processing
+- Apache Bin
+
+### Global, Regional and zonal resources
+- Google cloud consist of a set of Physical Assets presentes in North America, South America, Europe and Asia
+- Global Scope contém a VPC (Virtual Private Cloud) e é dividido em Regions
+- Region: cada região tem IP externos diferentes (load balancer) e é dividido em Zones. Ex: cental US
+- Zone contem os recursos a serem provisionados e permite ter replicação, HA e desaster recovery . Ex: us-central-1-a. Existe a possibilidade de não ter acesso a dados de uma zona em outra zona, sendo necessário copiar os dados. Storage por clompliance deixe no Brasil, deployments deixe na us-cental tem feafures nova e maquinas que oferecem mais performance a um custo menor.
+
+### Serviços par Data Engineer
+- Cloud Run
+- GKE
+- Big Query
+- DataProc
+- DataFlow
+- Pub&Sub
+- Data Fusion
+- Composer
+- Big Lake
+- Cloud SQL
+- AlloyDB for Postgres
+- Big Query Data Transfer Service
+- Logging, Monitoring, Profiler and Trace
+- Cloud Functions
+- Cloud Storage
+
+### Projeto
+- Any GCP resource allocated is in a project
+- Organization contem projetos contem resources e esta associado a um billing account
+- É como um namespace
+- By default Projetos não podem acessar recursos de outros projetos
+
+### IAM
+- Indentity and Access Management
+- Fine-grained Access control & visibility for centrally managing cloud resources
+- Lock e permissão de recursos
+- conta com UI
+- Single Access Control Interface: IAM provides a simple and consistent access control interface for all Google CLoud Services. Learn one access control interface and apply that knowledge to all resources.
+- Fine-grained control: grant access at a resource level of granularity, rather than just project level. For example, you can create an IAM access control policy that grants the subscriber role to a user for a particular Pub/Sub topic.
+- Automated Access Control Recomendations: automatically detect overly permissive access and rightsize them based on similar users in the organization and their patterns
+- Context-aware access: control access to resource based on contextual attributes like device security status, IP address, resource type, date/time
+- Flexible roles: Pub&Sub service exposes Plubisher and Subscriber roles in addition to the owner, editor and viwer roles.
+- Web, Programmatic and CLI: create and manage IAM policies using the Google Cloud Console, the IAM methods, and the GCloud command line tool.
+- Built-in Audit Trail: to ease compliance process for your organization, a full audit trail is made avaiable to admins without any additional effort
+- Support for cloud Identity: IAM supports standard Google Accounts. Create IAM policies granting permissiona to a Google group, a Google-hosted domain, a service account or specific Google Account holders using Cloud Identity. Centrally manage users and groups through the Google Admin Console.
+
+
+### Gcloud
+- GCP CLI
+- https://cloud.google.com/sdk/docs/install
+
+### Google Cloud python client
+- pypl: pypi.org/project/google-cloud-storage
+- samples: github.com/googleapis/google-cloud-python/blob/main/README.rst
+
+### Terraform
+- registry.terraform.io/providers/hashicorp/google/latest
+
+### Google Cloud Storage
+- GCS
+- Object Storage
+- Blob: Json, excel, avro, orc, parquet, delta
+- HA, redudancy, velocity, global, secure, scalable Object Store
+- HDFS-Compatible system
+- Data democratization at scale 
+- The data lake storage
+- used in data engineering pipelines
+- the data lake is built to destroy the department silos and democratize the data inside the organization. Everybody now has a centralized data store for analytics and promise of machine learning
+- Storage do tipo Objeto: Binary objects, metadata & attributes
+- Acesso via Https, APIs e REST
+- encrypted at rest
+- Videos, Images, documents, websites, structured & Unstructured data
+- cloud.google.com/storage/pricing
+- SP
+	- Standard (GB): $0.035
+	- Nearline (GB): $0.020 (minimun 30 days retention) 
+	- Coldline (GB): $0.007 (minimun 90 days retentition)
+	- Archive (GB): $0.030 (minimun 365 retention)
+- Autoclass: The Autoclass feature automatically transitions objects in your bucket to appropriate storage classes based on each object's access pattern. 
+	When Autoclass is enabled, objects are transitioned between storage classes as follows:
+	- If an object's data is accessed, the object transitions to Standard storage.
+	- Any object that isn't accessed for 30 days transitions to Nearline storage.
+	- Any object that isn't accessed for 90 days transitions to Coldline storage. Such objects spent at least 30 days in Standard storage and 60 days in Nearline storage.
+	- Any object that isn't accessed for 365 days transitions to Archive storage. Such objects spent at least 30 days in Standard storage, 60 days in Nearline storage and 275 days in Coldline storage.
+	- Autoclass only changes the state of an object stored in Archive storage if that object is accessed.
+- Location:
+	- Regional: 
+		- redudantly in a single region.
+		- Offers the lowest monthly storage price
+		- Wide range of use for High-performance Analytics
+		- Co-Locate compute & Storage same region
+		- Ideal for Analytics Projects
+	- Multi-Region:
+		- Higher Availability
+		- Stored Redundantly Across Continent
+		- No visible wich specific regions
+		- Serving web content across Internet
+	- Dual-Regions:
+		- Sored in Two specific Regions
+		- High-Availability
+		- Protection
+		- Business Critical Workloads
+		- Streaming, Batch & Processing at Scale
+- Lakehouse:
+	- Landing Zone: data from ingestion, raw format
+	- Processing Zone: to delta with schema
+	- Curated Zone: joins, agg
+	- Cold Zone: low accesed data
+
+### PD & Local SSDs
+- Storage do tipo block
+- files split into evenly block sizes of data
+- unique adress to each chunk
+- Acesso via OS who pull blocks
+- Databases, caches, VM disks
+
+### FileStorage
+- Storage do tipo FileStorage
+- Network Attached Storage (NAS)
+- Shared File Storage Unstructured Data
+- Acesso via file path
+- Use case: share data across users & Apps
+
+### Batch pipeline
+- Data fusion > Cloud Storage > Google DataProc > Google BigQuery
+
+### Ingestion
+- Pub & Sub
+- Publisher: write
+- Subscriber: Read
+- Pub & Sub applications are made to consume messages at low latency, and the core idea is to write and read a single message fast as possible, and we can persist this message in a topic or queue, an abstraction similar to a table
+
